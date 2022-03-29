@@ -20,6 +20,28 @@ namespace ObjGrid
         private int _fixedRowCount = 1;
         private int _fixedColumnCount = 1;
 
+        [DefaultValue(1)]
+        public int FixedRowCount
+        {
+            get => _fixedRowCount;
+            set
+            {
+                _fixedRowCount = value;
+                Invalidate();
+            }
+        }
+
+        [DefaultValue(1)]
+        public int FixedColumnCount
+        {
+            get => _fixedColumnCount;
+            set
+            {
+                _fixedColumnCount = value;
+                Invalidate();
+            }
+        }
+
         [DefaultValue(3)]
         public int RowCount
         {
@@ -36,17 +58,6 @@ namespace ObjGrid
                 }
                 GC.Collect();
                 _rowCount = value;
-                Invalidate();
-            }
-        }
-
-        [DefaultValue(1)]
-        public int FixedRowCount
-        {
-            get => _fixedRowCount;
-            set
-            {
-                _fixedRowCount = value;
                 Invalidate();
             }
         }
@@ -84,17 +95,6 @@ namespace ObjGrid
                     };
                 }
                 _columnCount = value;
-                Invalidate();
-            }
-        }
-
-        [DefaultValue(1)]
-        public int FixedColumnCount
-        {
-            get => _fixedColumnCount;
-            set
-            {
-                _fixedColumnCount = value;
                 Invalidate();
             }
         }
