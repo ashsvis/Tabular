@@ -58,7 +58,6 @@
             // 
             this.hScrollBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.hScrollBar1.Location = new System.Drawing.Point(684, 519);
-            this.hScrollBar1.Maximum = 1000;
             this.hScrollBar1.Name = "hScrollBar1";
             this.hScrollBar1.Size = new System.Drawing.Size(684, 17);
             this.hScrollBar1.TabIndex = 0;
@@ -68,7 +67,6 @@
             // 
             this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
             this.vScrollBar1.Location = new System.Drawing.Point(1369, 0);
-            this.vScrollBar1.Maximum = 1000;
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(17, 519);
             this.vScrollBar1.TabIndex = 1;

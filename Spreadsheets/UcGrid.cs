@@ -12,6 +12,8 @@ namespace Spreadsheets
         public UcGrid()
         {
             InitializeComponent();
+            hScrollBar1.Maximum = 65535;
+            vScrollBar1.Maximum = 65535;
             // вызываем принудительный пересчёт при старте
             ucGrid_Resize(this, EventArgs.Empty);
         }
