@@ -34,17 +34,19 @@ namespace Spreadsheets
             // 
             // gridView
             // 
+            this.gridView.ColumnCount = 10;
             this.gridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridView.Location = new System.Drawing.Point(0, 0);
             this.gridView.Name = "gridView";
-            this.gridView.Size = new System.Drawing.Size(800, 450);
+            this.gridView.RowCount = 25;
+            this.gridView.Size = new System.Drawing.Size(1178, 552);
             this.gridView.TabIndex = 0;
             // 
             // TabularForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1178, 552);
             this.Controls.Add(this.gridView);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "TabularForm";

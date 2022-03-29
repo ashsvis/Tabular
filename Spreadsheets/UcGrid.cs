@@ -29,8 +29,12 @@ namespace ObjGrid
                 if (value < 1 || _rowCount == value) return;
                 var oldGrid = grid;
                 grid = new Hashtable();
-                foreach (var key in oldGrid.Keys.Cast<CellIndex>().Where(x => x.Row < value))
+                foreach (var key in oldGrid.Keys.Cast<CellIndex>().Where(x => x.Row < value).ToList())
+                {
                     grid[key] = oldGrid[key];
+                    oldGrid.Remove(key);
+                }
+                GC.Collect();
                 _rowCount = value;
                 Invalidate();
             }
@@ -58,10 +62,18 @@ namespace ObjGrid
                 var oldColumns = columns;
                 grid = new Hashtable();
                 columns = new Hashtable();
-                foreach (var key in oldGrid.Keys.Cast<CellIndex>().Where(x => x.Column < value))
+                foreach (var key in oldGrid.Keys.Cast<CellIndex>().Where(x => x.Column < value).ToList())
+                {
                     grid[key] = oldGrid[key];
-                foreach (var key in oldColumns.Keys.Cast<ColumnIndex>().Where(x => x.Column < value))
+                    oldGrid.Remove(key);
+                }
+                GC.Collect();
+                foreach (var key in oldColumns.Keys.Cast<ColumnIndex>().Where(x => x.Column < value).ToList())
+                {
                     columns[key] = oldColumns[key];
+                    oldColumns.Remove(key);
+                }
+                GC.Collect();
                 // добавление настроек для новых столбцов
                 for (var j = _columnCount; j < value; j++)
                 {
