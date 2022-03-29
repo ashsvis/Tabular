@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GridPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GridPanel.Designer.cs">
+      <DependentUpon>GridPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="TabularForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,9 @@
     <Compile Include="UcGrid.designer.cs">
       <DependentUpon>UcGrid.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GridPanel.resx">
+      <DependentUpon>GridPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TabularForm.resx">
       <DependentUpon>TabularForm.cs</DependentUpon>
     </EmbeddedResource>

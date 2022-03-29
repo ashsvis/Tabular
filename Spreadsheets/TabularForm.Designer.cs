@@ -29,25 +29,23 @@ namespace Spreadsheets
         /// </summary>
         private void InitializeComponent()
         {
-            this.gridView = new ObjGrid.UcGrid();
+            this.grid = new Spreadsheets.UcGrid();
             this.SuspendLayout();
             // 
-            // gridView
+            // grid
             // 
-            this.gridView.ColumnCount = 10;
-            this.gridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridView.Location = new System.Drawing.Point(0, 0);
-            this.gridView.Name = "gridView";
-            this.gridView.RowCount = 25;
-            this.gridView.Size = new System.Drawing.Size(1178, 552);
-            this.gridView.TabIndex = 0;
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(0, 0);
+            this.grid.Name = "grid";
+            this.grid.Size = new System.Drawing.Size(1395, 539);
+            this.grid.TabIndex = 0;
             // 
             // TabularForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 552);
-            this.Controls.Add(this.gridView);
+            this.ClientSize = new System.Drawing.Size(1395, 539);
+            this.Controls.Add(this.grid);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name = "TabularForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
@@ -58,7 +56,7 @@ namespace Spreadsheets
 
         #endregion
 
-        private ObjGrid.UcGrid gridView;
+        private UcGrid grid;
     }
 }
 
