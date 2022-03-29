@@ -9,27 +9,35 @@ namespace Spreadsheets
 {
     public partial class UcGrid : UserControl
     {
-        private object[,] grid = new object[1000, 1000];
-
         public UcGrid()
         {
             InitializeComponent();
-            grid[4, 8] = "test";
+            // вызываем принудительный пересчёт при старте
+            ucGrid_Resize(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// При изменении размера корректируется значений больших приращений скроллеров
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ucGrid_Resize(object sender, EventArgs e)
         {
-            
+            hScrollBar1.LargeChange = Math.Max(gridPanel.ColumnVisibleCount - 1, 1);
+            vScrollBar1.LargeChange = Math.Max(gridPanel.RowVisibleCount - 1, 1);
         }
 
-        private void hScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        /// <summary>
+        /// Обработка событий от скроллеров
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ScrollBar_Scroll(object sender, ScrollEventArgs e)
         {
-            gridPanel.LeftColumn = hScrollBar1.Value;
-        }
-
-        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
-        {
-            gridPanel.TopRow = vScrollBar1.Value;
+            if (e.ScrollOrientation == ScrollOrientation.HorizontalScroll)
+                gridPanel.LeftColumn = hScrollBar1.Value;
+            else
+                gridPanel.TopRow = vScrollBar1.Value;
         }
     }
 

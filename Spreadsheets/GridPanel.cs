@@ -50,12 +50,12 @@ namespace Spreadsheets
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.UserPaint | ControlStyles.ResizeRedraw, true);
         }
 
-        private int RowVisibleCount
+        public int RowVisibleCount
         {
             get { return ClientRectangle.Height / defaultRowHeight + 1; }
         }
 
-        private int ColumnVisibleCount
+        public int ColumnVisibleCount
         {
             get { return ClientRectangle.Width / defaultColumnWidth + 1; }
         }

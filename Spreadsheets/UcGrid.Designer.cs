@@ -38,11 +38,12 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.hScrollBar1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.vScrollBar1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.hScrollBar1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.vScrollBar1, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.gridPanel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -56,12 +57,12 @@
             // hScrollBar1
             // 
             this.hScrollBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.hScrollBar1.Location = new System.Drawing.Point(0, 519);
+            this.hScrollBar1.Location = new System.Drawing.Point(684, 519);
             this.hScrollBar1.Maximum = 1000;
             this.hScrollBar1.Name = "hScrollBar1";
-            this.hScrollBar1.Size = new System.Drawing.Size(1369, 17);
+            this.hScrollBar1.Size = new System.Drawing.Size(684, 17);
             this.hScrollBar1.TabIndex = 0;
-            this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.hScrollBar1_Scroll);
+            this.hScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
             // 
             // vScrollBar1
             // 
@@ -71,18 +72,19 @@
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(17, 519);
             this.vScrollBar1.TabIndex = 1;
-            this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar1_Scroll);
+            this.vScrollBar1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ScrollBar_Scroll);
             // 
             // gridPanel
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.gridPanel, 2);
             this.gridPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridPanel.LeftColumn = 0;
             this.gridPanel.Location = new System.Drawing.Point(0, 0);
             this.gridPanel.Margin = new System.Windows.Forms.Padding(0);
             this.gridPanel.Name = "gridPanel";
-            this.gridPanel.Size = new System.Drawing.Size(1369, 519);
+            this.gridPanel.Size = new System.Drawing.Size(1368, 519);
             this.gridPanel.TabIndex = 2;
             this.gridPanel.Text = "gridPanel1";
-            this.gridPanel.LeftColumn = 0;
             this.gridPanel.TopRow = 0;
             // 
             // UcGrid
