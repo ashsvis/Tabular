@@ -77,8 +77,19 @@ namespace Spreadsheets
                     {
                         gr.FillRectangle(SystemBrushes.Window, rect);
                         gr.DrawRectangle(SystemPens.WindowFrame, rect);
+                        var arg = new CellTextEventArgs() { Row = row, Column = col };
+                        if (row == topRow && col == leftColumn)
+                        {
+
+                        }
+                        else if (row == topRow)
+                            onRowHeaderText?.Invoke(this, arg);
+                        else if (col == leftColumn)
+                            onColumnHeaderText?.Invoke(this, arg);
+                        else
+                            onCellText?.Invoke(this, arg);
                         using (var drawFormat = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
-                            gr.DrawString($"{row}.{col}", SystemFonts.CaptionFont, SystemBrushes.WindowText, rect, drawFormat);
+                            gr.DrawString(arg.Text, SystemFonts.CaptionFont, SystemBrushes.WindowText, rect, drawFormat);
                     }
                     rect.Offset(rect.Width, 0);
                 }
@@ -87,6 +98,48 @@ namespace Spreadsheets
             }
             // внешняя рамка
             gr.DrawRectangle(SystemPens.WindowFrame, area);
+        }
+
+        private event CellTextEventHandler onCellText;
+
+        public event CellTextEventHandler OnCellText
+        {
+            add
+            {
+                onCellText += value;
+            }
+            remove
+            {
+                onCellText -= value;
+            }
+        }
+
+        private event RowHeaderEventHandler onRowHeaderText;
+
+        public event RowHeaderEventHandler OnRowHeaderText
+        {
+            add
+            {
+                onRowHeaderText += value;
+            }
+            remove
+            {
+                onRowHeaderText -= value;
+            }
+        }
+
+        private event ColumnHeaderEventHandler onColumnHeaderText;
+
+        public event ColumnHeaderEventHandler OnColumnHeaderText
+        {
+            add
+            {
+                onColumnHeaderText += value;
+            }
+            remove
+            {
+                onColumnHeaderText -= value;
+            }
         }
     }
 }
