@@ -82,9 +82,9 @@ namespace Spreadsheets
                         {
 
                         }
-                        else if (row == topRow)
-                            onRowHeaderText?.Invoke(this, arg);
                         else if (col == leftColumn)
+                            onRowHeaderText?.Invoke(this, arg);
+                        else if (row == topRow)
                             onColumnHeaderText?.Invoke(this, arg);
                         else
                             onCellText?.Invoke(this, arg);

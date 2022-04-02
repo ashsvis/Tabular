@@ -23,17 +23,17 @@ namespace Spreadsheets
 
         private void GridPanel_OnRowHeaderText(object sender, CellTextEventArgs e)
         {
-            e.Text = $"C{e.Column}";
+            e.Text = $"R{e.Row}";
         }
 
         private void GridPanel_OnColumnHeaderText(object sender, CellTextEventArgs e)
         {
-            e.Text = $"R{e.Row}";
+            e.Text = $"C{e.Column}";
         }
 
         private void GridPanel_OnGetCellText(object sender, CellTextEventArgs e)
         {
-            e.Text = $"{e.Row}.{e.Column}";
+            //e.Text = $"{e.Row}.{e.Column}";
         }
 
         /// <summary>
