@@ -14,27 +14,33 @@ namespace Spreadsheets
             InitializeComponent();
             hScrollBar1.Maximum = 65535;
             vScrollBar1.Maximum = 65535;
-            gridPanel.OnColumnHeaderText += GridPanel_OnColumnHeaderText;
-            gridPanel.OnRowHeaderText += GridPanel_OnRowHeaderText;
-            gridPanel.OnCellText += GridPanel_OnGetCellText;
+            //gridPanel.OnColumnHeaderText += GridPanel_OnColumnHeaderText;
+            //gridPanel.OnRowHeaderText += GridPanel_OnRowHeaderText;
+            //gridPanel.OnCellText += GridPanel_OnGetCellText;
+            gridPanel.OnCell += GridPanel_OnGetCell;
             // вызываем принудительный пересчёт при старте
             ucGrid_Resize(this, EventArgs.Empty);
         }
 
-        private void GridPanel_OnRowHeaderText(object sender, CellTextEventArgs e)
+        private void GridPanel_OnGetCell(object sender, CellEventArgs e)
         {
-            e.Text = $"R{e.Row}";
+            e.Cell = new GridModel.Cells.Cell();
         }
 
-        private void GridPanel_OnColumnHeaderText(object sender, CellTextEventArgs e)
-        {
-            e.Text = $"C{e.Column}";
-        }
+        //private void GridPanel_OnRowHeaderText(object sender, CellTextEventArgs e)
+        //{
+        //    e.Text = $"R{e.Row}";
+        //}
 
-        private void GridPanel_OnGetCellText(object sender, CellTextEventArgs e)
-        {
-            //e.Text = $"{e.Row}.{e.Column}";
-        }
+        //private void GridPanel_OnColumnHeaderText(object sender, CellTextEventArgs e)
+        //{
+        //    e.Text = $"C{e.Column}";
+        //}
+
+        //private void GridPanel_OnGetCellText(object sender, CellTextEventArgs e)
+        //{
+        //    //e.Text = $"{e.Row}.{e.Column}";
+        //}
 
         /// <summary>
         /// При изменении размера корректируется значений больших приращений скроллеров

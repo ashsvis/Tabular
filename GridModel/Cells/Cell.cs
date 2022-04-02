@@ -1,6 +1,5 @@
 ﻿using GridModel.Renderers;
 using System;
-using System.Drawing.Drawing2D;
 
 namespace GridModel.Cells
 {
@@ -24,17 +23,6 @@ namespace GridModel.Cells
         {
             Style = new Styles.Style();
             Renderer = new DefaultRenderer();
-        }
-
-        /// <summary>
-        /// Предоставление геометрии для рисования
-        /// </summary>
-        /// <returns>Путь для рисования</returns>
-        public virtual GraphicsPath GetPath()
-        {
-            // создаём геометрии ячейки
-            var path = new GraphicsPath();
-            return path;
         }
     }
 }

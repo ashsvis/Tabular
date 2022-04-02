@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CellTextEventHandler.cs" />
+    <Compile Include="CellEventArgs.cs" />
     <Compile Include="GridPanel.cs">
       <SubType>Component</SubType>
     </Compile>

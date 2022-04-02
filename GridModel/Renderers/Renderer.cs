@@ -15,7 +15,7 @@ namespace GridModel.Renderers
         /// </summary>
         /// <param name="graphics">Канва для рисования</param>
         /// <param name="cell">ячейка со свойствами для рисования</param>
-        public abstract void Render(Graphics graphics, Cell cell);
+        public abstract void Render(Graphics graphics, Rectangle rect, Cell cell);
 
         /// <summary>
         /// Допустимые операции над геометрией

@@ -75,21 +75,10 @@ namespace Spreadsheets
                 {
                     if (ClientRectangle.IntersectsWith(rect))
                     {
-                        gr.FillRectangle(SystemBrushes.Window, rect);
-                        gr.DrawRectangle(SystemPens.WindowFrame, rect);
-                        var arg = new CellTextEventArgs() { Row = row, Column = col };
-                        if (row == topRow && col == leftColumn)
-                        {
-
-                        }
-                        else if (col == leftColumn)
-                            onRowHeaderText?.Invoke(this, arg);
-                        else if (row == topRow)
-                            onColumnHeaderText?.Invoke(this, arg);
-                        else
-                            onCellText?.Invoke(this, arg);
-                        using (var drawFormat = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
-                            gr.DrawString(arg.Text, SystemFonts.CaptionFont, SystemBrushes.WindowText, rect, drawFormat);
+                        var arg = new CellEventArgs() { Row = row, Column = col };
+                        onCell?.Invoke(this, arg);
+                        var cell = arg.Cell;
+                        cell.Renderer.Render(gr, rect, cell);
                     }
                     rect.Offset(rect.Width, 0);
                 }
@@ -100,45 +89,17 @@ namespace Spreadsheets
             gr.DrawRectangle(SystemPens.WindowFrame, area);
         }
 
-        private event CellTextEventHandler onCellText;
+        private event CellEventHandler onCell;
 
-        public event CellTextEventHandler OnCellText
+        public event CellEventHandler OnCell
         {
             add
             {
-                onCellText += value;
+                onCell += value;
             }
             remove
             {
-                onCellText -= value;
-            }
-        }
-
-        private event RowHeaderEventHandler onRowHeaderText;
-
-        public event RowHeaderEventHandler OnRowHeaderText
-        {
-            add
-            {
-                onRowHeaderText += value;
-            }
-            remove
-            {
-                onRowHeaderText -= value;
-            }
-        }
-
-        private event ColumnHeaderEventHandler onColumnHeaderText;
-
-        public event ColumnHeaderEventHandler OnColumnHeaderText
-        {
-            add
-            {
-                onColumnHeaderText += value;
-            }
-            remove
-            {
-                onColumnHeaderText -= value;
+                onCell -= value;
             }
         }
     }
