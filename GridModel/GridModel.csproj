@@ -50,6 +50,7 @@
     <Compile Include="Styles\DefaultFill.cs" />
     <Compile Include="Styles\Fill.cs" />
     <Compile Include="Styles\Style.cs" />
+    <Compile Include="Styles\Text.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

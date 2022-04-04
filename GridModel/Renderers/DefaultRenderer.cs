@@ -24,18 +24,26 @@ namespace GridModel.Renderers
                 path.AddRectangle(rect);
                 // если разрешено использование заливки
                 if (cell.Style.FillStyle != null && cell.Style.FillStyle.IsVisible)
+                {
                     // то получаем кисть из стиля рисования ячейки
                     using (var brush = cell.Style.FillStyle.GetBrush(cell))
                         graphics.FillPath(brush, path);
-
-                //using (var drawFormat = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center })
-                //    gr.DrawString(arg.Text, SystemFonts.CaptionFont, SystemBrushes.WindowText, rect, drawFormat);
-
+                }
+                if (cell.Style.TextStyle != null && cell.Style.TextStyle.IsVisible && !string.IsNullOrWhiteSpace(cell.Text))
+                {
+                    using (var sf = new StringFormat(StringFormat.GenericTypographic))
+                    {
+                        sf.Alignment = cell.Style.TextStyle.Alignment;
+                        path.AddString(cell.Text, new FontFamily(cell.Style.TextStyle.FontName), (int)cell.Style.TextStyle.FontStyle, 14f, PointF.Empty, sf);
+                    }
+                }
                 // если разрешено рисование контура
                 if (cell.Style.BorderStyle != null && cell.Style.BorderStyle.IsVisible)
+                {
                     // то получаем карандаш из стиля рисования ячейки
                     using (var pen = cell.Style.BorderStyle.GetPen(cell))
                         graphics.DrawPath(pen, path);
+                }
             }
         }
 

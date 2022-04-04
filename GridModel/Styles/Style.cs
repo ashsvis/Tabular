@@ -15,6 +15,12 @@ namespace GridModel.Styles
         /// </summary>
         public Fill FillStyle { get; set; }
 
+
+        /// <summary>
+        /// Свойство для хранения данных кисти
+        /// </summary>
+        public Text TextStyle { get; set; }
+
         /// <summary>
         /// Конструктор стилей, для задания свойств по умолчанию
         /// </summary>
@@ -22,6 +28,7 @@ namespace GridModel.Styles
         {
             BorderStyle = new Border();
             FillStyle = new DefaultFill();
+            TextStyle = new Text();
         }
 
     }
