@@ -21,7 +21,7 @@ namespace Spreadsheets
 
         private void GridPanel_OnGetCell(object sender, CellEventArgs e)
         {
-            e.Cell = new GridModel.Cells.Cell() { Text = "text" };
+            e.Cell = new GridModel.Cells.Cell() { Text = "Xxy" };
         }
 
         /// <summary>

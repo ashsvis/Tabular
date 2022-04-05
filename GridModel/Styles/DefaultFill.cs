@@ -28,13 +28,13 @@ namespace GridModel.Styles
         }
 
         /// <summary>
-        /// Предоставление кисти для заливки фигуры
+        /// Предоставление кисти для заливки ячейки
         /// </summary>
-        /// <param name="figure">Ссылка на фигуру</param>
+        /// <param name="cell">Ссылка на ячейку</param>
         /// <returns>Возвращаем настроенную кисть</returns>
-        public override Brush GetBrush(Cell figure)
+        public override Brush GetBrush(Cell cell)
         {
-            // возвращаем созданную и настроенную кисть для фигуры
+            // возвращаем созданную и настроенную кисть для ячейки
             return new SolidBrush(Color.FromArgb(Opacity, Color));
         }
 

@@ -10,22 +10,40 @@ namespace GridModel.Styles
     [Serializable]
     public class Text
     {
+        public Text()
+        {
+            // по умолчанию текст разрешён
+            IsVisible = true;
+            // по умолчанию полная непрозрачность
+            Opacity = 255;
+            // по умолчанию чёрный цвет шрифта
+            Color = Color.Black;
+            Alignment = StringAlignment.Near;
+            LineAlignment = StringAlignment.Center;
+            FontName = "Segoe UI";
+            // по умолчанию 8 единиц
+            FontSize = 8f;
+            FontStyle = FontStyle.Regular;
+        }
+
         /// <summary>
         /// Величина прозрачности цвета заливки текста
         /// </summary>
         public virtual int Opacity { get; set; }
 
         /// <summary>
-        /// Цвет для заполнения фона (цвет заливки текста)
+        /// Цвет для заливки текста
         /// </summary>
         public virtual Color Color { get; set; }
 
         public StringAlignment Alignment { get; set; }
+        public StringAlignment LineAlignment { get; set; }
 
         /// <summary>
         /// Имя файла шрифта
         /// </summary>
-        public string FontName { get; set; } = "Segoe UI";
+        public string FontName { get; set; }
+        public float FontSize { get; set; }
 
         /// <summary>
         /// Тип шрифта
@@ -33,14 +51,25 @@ namespace GridModel.Styles
         public FontStyle FontStyle { get; set; }
 
         /// <summary>
+        /// Предоставление кисти для заливки ячейки
+        /// </summary>
+        /// <param name="cell">Ссылка на ячейку</param>
+        /// <returns>Возвращаем настроенную кисть</returns>
+        public virtual Brush GetBrush(Cell cell)
+        {
+            // возвращаем созданную и настроенную кисть для ячейки
+            return new SolidBrush(Color.FromArgb(Opacity, Color));
+        }
+
+        /// <summary>
         /// Признак возможности заливки текста
         /// </summary>
         public virtual bool IsVisible { get; set; } = true;
 
-        public Brush GetBrush(Cell cell)
+        public Font GetFont(Cell cell)
         {
             // возвращаем созданный и настроенный карандаш для контура ячейки
-            return new SolidBrush(Color.FromArgb(Opacity, Color));
+            return new Font(FontName, FontSize, FontStyle);
         }
 
         /// <summary>
