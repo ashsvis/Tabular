@@ -78,7 +78,7 @@ namespace Spreadsheets
                         var arg = new CellEventArgs() { Row = row, Column = col };
                         onCell?.Invoke(this, arg);
                         var cell = arg.Cell;
-                        cell.Renderer.Render(gr, rect, cell);
+                        cell?.Renderer.Render(gr, rect, cell);
                     }
                     rect.Offset(rect.Width, 0);
                 }

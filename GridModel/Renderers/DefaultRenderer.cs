@@ -18,6 +18,7 @@ namespace GridModel.Renderers
         /// <param name="cell">Ячейка со свойствами для рисования</param>
         public override void Render(Graphics graphics, Rectangle rect, Cell cell)
         {
+            if (cell == null) return;
             // получаем путь для рисования, трансформированный методом ячейки
             using (var path = new GraphicsPath())
             {

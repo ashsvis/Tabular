@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Spreadsheets
@@ -21,7 +18,26 @@ namespace Spreadsheets
 
         private void GridPanel_OnGetCell(object sender, CellEventArgs e)
         {
-            e.Cell = new GridModel.Cells.Cell() { Text = "Xxy" };
+            if (e.Column > hScrollBar1.Maximum || e.Row > vScrollBar1.Maximum)
+                return;
+            var cell = new GridModel.Cells.Cell();
+            if (e.Row == gridPanel.TopRow && e.Column == gridPanel.LeftColumn)
+            {
+                cell.Style.FillStyle.Color = SystemColors.Control;
+            }
+            else if (e.Row == gridPanel.TopRow && e.Column > gridPanel.LeftColumn)
+            {
+                cell.Text = $"{e.Column}";
+                cell.Style.FillStyle.Color = SystemColors.Control;
+                cell.Style.TextStyle.Alignment = StringAlignment.Center;
+            }
+            else if (e.Column == gridPanel.LeftColumn && e.Row > gridPanel.TopRow)
+            {
+                cell.Text = $"{e.Row}";
+                cell.Style.FillStyle.Color = SystemColors.Control;
+                cell.Style.TextStyle.Alignment = StringAlignment.Center;
+            }
+            e.Cell = cell;
         }
 
         /// <summary>
@@ -31,8 +47,8 @@ namespace Spreadsheets
         /// <param name="e"></param>
         private void ucGrid_Resize(object sender, EventArgs e)
         {
-            hScrollBar1.LargeChange = Math.Max(gridPanel.ColumnVisibleCount - 1, 1);
-            vScrollBar1.LargeChange = Math.Max(gridPanel.RowVisibleCount - 1, 1);
+            hScrollBar1.LargeChange = Math.Max(gridPanel.ColumnVisibleCount - 2, 1);
+            vScrollBar1.LargeChange = Math.Max(gridPanel.RowVisibleCount - 2, 1);
         }
 
         /// <summary>
